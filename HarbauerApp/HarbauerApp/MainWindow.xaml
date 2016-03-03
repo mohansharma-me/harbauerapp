@@ -1,0 +1,79 @@
+﻿<Window x:Class="HarbauerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HarbauerApp"
+        xmlns:page="clr-namespace:HarbauerApp.page"
+        xmlns:Job="clr-namespace:HarbauerApp.classes"
+        mc:Ignorable="d"
+        WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        MinHeight="768" MinWidth="1024"
+        Loaded="Window_Loaded" Unloaded="Window_Unloaded" Closing="Window_Closing"
+        Title="Harbauer App - ORGEngitech" Height="768" Width="1024" Icon="media/harbauer.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="73*"/>
+            <RowDefinition Height="547*"/>
+            <RowDefinition Height="75*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="{StaticResource navBackground}" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Image VerticalAlignment="Center" Margin="40 0 10 0" Width="64" Height="64" Source="media/harbauer.ico" />
+                <TextBlock Foreground="White" FontSize="28" FontWeight="Bold" VerticalAlignment="Center">HARBAUER <TextBlock Foreground="White" VerticalAlignment="Bottom" FontSize="10" FontWeight="Bold">APP</TextBlock></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="100 0 0 0">
+                    <Button x:Name="btnHome" Click="btnHome_Click" Style="{StaticResource navButton}">Home</Button>
+                    <Button x:Name="btnLogin" Click="btnLogin_Click" Style="{StaticResource navButton}">Login</Button>
+                    <Button x:Name="btnReport" Click="btnReport_Click" Style="{StaticResource navButton}">Report</Button>
+                    <Button x:Name="btnSettings" Click="btnSettings_Click" Style="{StaticResource navButton}">Settings</Button>
+                    <Button x:Name="btnExit" Click="btnExit_Click" Style="{StaticResource navButton}">Exit</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+        <DockPanel Grid.Row="1" Background="#EEEEEE" x:Name="frmPage">
+            <TextBlock HorizontalAlignment="Stretch" TextAlignment="Center" VerticalAlignment="Center" FontSize="28">LOADING</TextBlock>
+        </DockPanel>
+
+        <Grid Grid.Row="2" x:Name="gvSticker">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="SkyBlue">
+                <!--<TextBlock Padding="10 0" x:Name="alertMarquee" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Text="{Binding Sticker}" />-->
+                <Canvas x:Name="canvas1" ClipToBounds="True">
+                    <TextBlock x:Name="marquee1" Text="{Binding Sticker}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                </Canvas>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="OrangeRed">
+                <!--<TextBlock Padding="10 0" x:Name="alertMarquee" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Text="{Binding Sticker}" />-->
+                <Canvas x:Name="canvas2" ClipToBounds="True">
+                    <TextBlock x:Name="marquee2" Text="{Binding AStatus}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                </Canvas>
+            </Grid>
+
+            <Grid Grid.Row="2" Background="Green">
+                <!--<TextBlock Padding="10 0" x:Name="alertMarquee" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Text="{Binding Sticker}" />-->
+                <Canvas x:Name="canvas3" ClipToBounds="True">
+                    <TextBlock x:Name="marquee3" Text="{Binding IStatus}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                </Canvas>
+            </Grid>
+
+            <Grid Grid.Row="3" Background="Orange">
+                <!--<TextBlock Padding="10 0" x:Name="alertMarquee" HorizontalAlignment="Left"  Foreground="Black" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Text="{Binding Sticker}" />-->
+                <Canvas x:Name="canvas4" ClipToBounds="True">
+                    <TextBlock x:Name="marquee4" Text="{Binding BStatus}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
+                </Canvas>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

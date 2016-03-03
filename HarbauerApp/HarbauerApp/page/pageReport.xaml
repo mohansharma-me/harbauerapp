@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="HarbauerApp.page.pageReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HarbauerApp.page"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent"
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" LastChildFill="True" Margin="10">
+            <TextBlock DockPanel.Dock="Top" FontSize="22" FontWeight="Bold">Report</TextBlock>
+            <StackPanel Margin="0 10 0 0">
+                <Grid x:Name="gvReport">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.1*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.14*"/>
+                        <ColumnDefinition/>
+                       <!--<ColumnDefinition/>-->
+                    </Grid.ColumnDefinitions>
+                    
+                    
+                    <!-- columns -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Background="{StaticResource subNavBackground}" Text="Contamination" Foreground="White" FontSize="16" Padding="10 5"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Background="{StaticResource subNavBackground}" Text="Raw Water Quality" Foreground="White" FontSize="16" Padding="10 5"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Background="{StaticResource subNavBackground}" Text="Permissable Limits" Foreground="White" FontSize="16" Padding="10 5"/>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Background="{StaticResource subNavBackground}" Text="Treated Water Quality" Foreground="White" FontSize="16" Padding="10 5"/>
+                    <!--<TextBlock Grid.Row="0" Grid.Column="4" Background="{StaticResource subNavBackground}" Text="Desirable Limits" Foreground="White" FontSize="16" Padding="10 5"/>-->
+                    <TextBlock Grid.Row="0" Grid.Column="5" Background="{StaticResource subNavBackground}" Text="Safe/Unsafe" Foreground="White" FontSize="16" Padding="10 5"/>
+                    
+                    <!-- rows 1 to 3 -->
+                    <TextBlock Grid.Row="1" Grid.Column="0" Background="White" FontWeight="Bold" Text="Arsenic (in mg/l)" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="1" x:Name="aRaw" Grid.Column="1" Background="White" Text="{Binding aRaw}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="1" x:Name="aLimit" Grid.Column="2" Background="White" Text="{Binding aLimit}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="1" x:Name="aTreated" Grid.Column="3" Background="White" Text="{Binding aTreated}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <!--<TextBlock Grid.Row="1" x:Name="aDesirable" Grid.Column="4" Background="White" Text="{Binding aDesirable}" FontSize="14" Padding="10 5"/>-->
+                    <TextBlock Grid.Row="1" x:Name="aSafe" Grid.Column="5" Background="White" Text="{Binding aSafe}" FontSize="14" Padding="10 5"/>
+                    
+                    <TextBlock Grid.Row="2" Grid.Column="0" Background="White" FontWeight="Bold" Text="Iron (in mg/l)" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="2" x:Name="iRaw" Grid.Column="1" Background="White" Text="{Binding iRaw}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="2" x:Name="iLimit" Grid.Column="2" Background="White" Text="{Binding iLimit}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="2" x:Name="iTreated" Grid.Column="3" Background="White" Text="{Binding iTreated}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <!--<TextBlock Grid.Row="2" x:Name="iDesirable" Grid.Column="4" Background="White" Text="{Binding iDesirable}" FontSize="14" Padding="10 5"/>-->
+                    <TextBlock Grid.Row="2" x:Name="iSafe" Grid.Column="5" Background="White" Text="{Binding iSafe}"  FontSize="14" Padding="10 5"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Background="White" FontWeight="Bold" Text="Bacteriological" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="3" x:Name="gRaw" Grid.Column="1" Background="White" Text="{Binding bRaw}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="3" x:Name="gLimit" Grid.Column="2" Background="White" Text="{Binding bLimit}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <TextBlock Grid.Row="3" x:Name="gTreated" Grid.Column="3" Background="White" Text="{Binding bTreated}" TextAlignment="Center" FontSize="14" Padding="10 5"/>
+                    <!--<TextBlock Grid.Row="3" x:Name="gDesirable" Grid.Column="4" Background="White" Text="{Binding bDesirable}" FontSize="14" Padding="10 5"/>-->
+                    <TextBlock Grid.Row="3" x:Name="gSafe" Grid.Column="5" Background="White" Text="{Binding bSafe}"  FontSize="14" Padding="10 5"/>
+
+                </Grid>
+            </StackPanel>
+        </DockPanel>
+        
+        <DockPanel Grid.Row="1" Background="{StaticResource subNavBackground}" VerticalAlignment="Stretch" LastChildFill="True">
+            <DockPanel Margin="0 0 0 0" DockPanel.Dock="Left">
+                <Button x:Name="btnExport" Click="btnExport_Click" Style="{StaticResource navButton}">Export</Button>
+            </DockPanel>
+            <DockPanel Margin="0 0 10 0" FlowDirection="RightToLeft" LastChildFill="True">
+                <ComboBox Margin="5" x:Name="cmbReports" SelectionChanged="cmbReports_SelectionChanged" Padding="10 5" HorizontalAlignment="Stretch" FlowDirection="LeftToRight">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <DockPanel LastChildFill="True">
+                                <TextBlock Text="{Binding DisplayString}" VerticalAlignment="Center" FontSize="18" />
+                            </DockPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock DockPanel.Dock="Left" VerticalAlignment="Center" Text=" : Report" Padding="10 5" Foreground="White" FontSize="16" FontWeight="Bold"/>
+            </DockPanel>
+        </DockPanel>
+        
+    </Grid>
+</UserControl>

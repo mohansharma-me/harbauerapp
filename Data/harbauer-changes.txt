@@ -1,0 +1,5 @@
+logo
+report -> add(tec) delete(admin)
+last-report (latest-news)
+auto startup
+photo/video auto rotation

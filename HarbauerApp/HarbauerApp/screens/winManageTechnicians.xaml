@@ -1,0 +1,91 @@
+﻿<Window x:Class="HarbauerApp.screens.winManageTechnicians"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HarbauerApp.screens"
+        xmlns:cls="clr-namespace:HarbauerApp.classes"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        WindowStyle="SingleBorderWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        Title="Manage Accounts" Height="500" Width="700" Icon="/HarbauerApp;component/media/manage-technician.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0" x:Name="lvUsers" SelectionChanged="lvUsers_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5 10" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <Image Margin="0 0 5 0" Width="42" Height="42" Source="{Binding userImage}" />
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock VerticalAlignment="Center" FontWeight="Bold" FontSize="22" Text="{Binding userName}" />
+                            <TextBlock VerticalAlignment="Center" Foreground="Gray" FontSize="18" Text="{Binding userKind}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="0" x:Name="spNewUser" Visibility="Collapsed">
+            <DockPanel Margin="10 10 10 20">
+                <TextBlock FontSize="22" FontWeight="Bold">New User Form...</TextBlock>
+            </DockPanel>
+            <DockPanel Margin="10 0 10 10">
+                <TextBlock DockPanel.Dock="Top" FontSize="18" VerticalAlignment="Center">Username:</TextBlock>
+                <TextBox x:Name="txtUsername" DockPanel.Dock="Bottom" Padding="5 10" FontSize="18" Margin="0 5" HorizontalAlignment="Stretch"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10 0 10 10">
+                <TextBlock DockPanel.Dock="Top" FontSize="18" VerticalAlignment="Center">Password:</TextBlock>
+                <PasswordBox x:Name="txtPassword" DockPanel.Dock="Bottom" Padding="5 10" FontSize="18" Margin="0 5" HorizontalAlignment="Stretch"></PasswordBox>
+            </DockPanel>
+            <DockPanel Margin="10 0 10 10">
+                <TextBlock DockPanel.Dock="Top" FontSize="18" VerticalAlignment="Center">User Type:</TextBlock>
+                <ComboBox x:Name="cmbUserKind" SelectedIndex="0" Margin="0 5">
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="42" Source="/HarbauerApp;component/media/admin.png" VerticalAlignment="Center" />
+                            <TextBlock FontSize="18"  VerticalAlignment="Center">Administrator</TextBlock>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="42" Source="/HarbauerApp;component/media/technicien.png" VerticalAlignment="Center" />
+                            <TextBlock FontSize="18"  VerticalAlignment="Center">Technician</TextBlock>
+                        </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox>
+            </DockPanel>
+        </StackPanel>
+        
+        <Grid Grid.Row="1" x:Name="navListView">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" HorizontalAlignment="Stretch" x:Name="btnNewUser" Click="btnNewUser_Click" Style="{StaticResource myButton}" FontWeight="Normal" FontSize="16">New User</Button>
+            <Button Grid.Column="1" HorizontalAlignment="Stretch" x:Name="btnEditUser" Click="btnEditUser_Click" IsEnabled="False" Style="{StaticResource myButton}" FontWeight="Normal" FontSize="16"></Button>
+            <Button Grid.Column="2" HorizontalAlignment="Stretch" x:Name="btnDeleteUsers" Click="btnDeleteUsers_Click" IsEnabled="False" Style="{StaticResource myButton}" FontWeight="Normal" FontSize="16">Delete User(s)</Button>
+            <Button Grid.Column="3" HorizontalAlignment="Stretch" x:Name="btnRefreshUsers" Click="btnRefreshUsers_Click" Style="{StaticResource myButton}" FontWeight="Normal" FontSize="16">Refresh</Button>
+        </Grid>
+
+        <Grid Grid.Row="1" x:Name="navAddUser" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" HorizontalAlignment="Stretch" IsDefault="True" x:Name="btnSubmitNewUserForm" Click="btnSubmitNewUserForm_Click" Style="{StaticResource myButton}" FontWeight="Normal" FontSize="16">Submit</Button>
+            <Button Grid.Column="3" HorizontalAlignment="Stretch"  x:Name="btnBackToListView" Click="btnBackToListView_Click" Style="{StaticResource myButton}" FontWeight="Normal" FontSize="16">Back</Button>
+
+        </Grid>
+
+
+    </Grid>
+</Window>

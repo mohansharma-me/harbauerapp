@@ -1,0 +1,6 @@
+software as desktop with system startup...
+homepage - video itself with signals.
+menus:
+	home,login,reports,settings
+	home->Animation, Images
+	login->

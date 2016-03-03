@@ -1,0 +1,32 @@
+﻿<Window x:Class="HarbauerApp.screens.winImages"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HarbauerApp.screens"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Icon="/HarbauerApp;component/media/harbauer.ico"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow"
+        Title="Edit Images" Height="400" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="165*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lvImages" KeyDown="lvImages_KeyDown">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="128" Source="{Binding ImageObject}" VerticalAlignment="Center" />
+                        <TextBlock Margin="10 0 0 0" Width="400" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Text="{Binding ImageName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <TextBlock Background="#eeeeee" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Padding="10 12" Grid.Row="1">Press 'DELETE' button to delete selected images.</TextBlock>
+
+    </Grid>
+</Window>
